@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path")
 
 const PORT = 443
 const app = express();
@@ -11,10 +12,10 @@ app.get("/image.jpg", (req, res) => {
     console.log(req.socket.remoteAddress)
     
     const currentTime = new Date().toLocaleString('en-US', { timeZone: 'GMT' });
-    
-    console.log("GMT Time: ", currentTime)
 
-    res.sendFile("image.jpg")
+    console.log("GMT Time:", currentTime)
+
+    res.sendFile(path.join(__dirname, "assets/image.jpg"))
 })
 
 app.listen(PORT, '0.0.0.0', () => {
